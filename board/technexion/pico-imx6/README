@@ -65,6 +65,20 @@ Flash SPL and u-boot-dtb.img into the eMMC running the following commands on a P
 $ sudo dfu-util -D SPL -a spl
 
 $ sudo dfu-util -D u-boot-dtb.img -a u-boot
+Run the UMS command so that we can flash the new images via USB:
+
+=> ums 0 mmc 0
+
+Flash SPL and u-boot-dtb.img into the eMMC running the following commands on the PC:
+
+$ sudo dd if=SPL of=/dev/sdX bs=1K seek=1; sync
+$ sudo dd if=u-boot-dtb.img of=/dev/sdX bs=1K seek=69; sync
+
+On the U-Boot terminal, type "CTRL + C" after the copy is done.
+
+Make sure we are allowed to boot from the newly flashed U-Boot:
+
+=> mmc partconf 0 0 0 0
 
 Remove power from the pico board.
 

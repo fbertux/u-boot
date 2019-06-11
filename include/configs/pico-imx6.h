@@ -73,6 +73,11 @@
 	"mmcdev=" __stringify(CONFIG_SYS_MMC_ENV_DEV) "\0" \
 	CONFIG_DFU_ENV_SETTINGS \
 	"finduuid=part uuid mmc 0:1 uuid\0" \
+	"findbaseboard=" \
+		"if test $baseboard = ask ; then " \
+			"bootmenu -1; fi;" \
+		"if test $baseboard != ask ; then " \
+			"saveenv; fi;\0" \
 	"findfdt="\
 		"if test $baseboard = hobbit && test $board_rev = MX6Q ; then " \
 			"setenv fdtfile imx6q-pico-hobbit.dtb; fi; " \
@@ -158,5 +163,10 @@
 #define CONFIG_VIDEO_BMP_LOGO
 #define CONFIG_IMX_HDMI
 #define CONFIG_IMX_VIDEO_SKIP
+
+#define CONFIG_ENV_SIZE			(8 * 1024)
+
+#define CONFIG_ENV_OFFSET		(768 * 1024)
+#define CONFIG_SYS_MMC_ENV_DEV		0
 
 #endif			       /* __CONFIG_H * */

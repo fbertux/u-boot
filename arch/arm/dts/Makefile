@@ -613,6 +613,8 @@ dtb-y += \
 	imx6qp-sabreauto.dtb \
 	imx6qp-sabresd.dtb \
 	imx6qp-wandboard-revd1.dtb \
+	imx6dl-pico.dtb \
+	imx6q-pico.dtb \
 
 endif
 
