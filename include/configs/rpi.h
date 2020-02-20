@@ -84,13 +84,13 @@
  * UpdateHub configuration
  */
 
-#define UPDATEHUB_LOAD_OS_A     "load mmc 0:2 ${kernel_addr_r} /boot/zImage; " \
+#define UPDATEHUB_LOAD_OS_A     "load mmc 0:2 ${kernel_addr_r} /boot/uImage; " \
                                 "load mmc 0:2 ${fdt_addr_r} /boot/${fdtfile}; " \
                                 "fdt addr ${fdt_addr_r} && " \
                                 "fdt get value bootargs_dtb /chosen bootargs;"
 #define UPDATEHUB_FIND_ROOT_A   "part uuid mmc 0:2 uuid"
 
-#define UPDATEHUB_LOAD_OS_B     "load mmc 0:3 ${kernel_addr_r} /boot/zImage; " \
+#define UPDATEHUB_LOAD_OS_B     "load mmc 0:3 ${kernel_addr_r} /boot/uImage; " \
                                 "load mmc 0:3 ${fdt_addr_r} /boot/${fdtfile}; " \
                                 "fdt addr ${fdt_addr_r} && " \
                                 "fdt get value bootargs_dtb /chosen bootargs;"
@@ -98,7 +98,7 @@
 
 #define UPDATEHUB_BOOTARGS      "${bootargs_dtb} root=PARTUUID=${uuid} rootwait rw " \
                                 "console=ttyS0,115200"
-#define UPDATEHUB_BOOTCMD       "bootz ${kernel_addr_r} - ${fdt_addr_r}"
+#define UPDATEHUB_BOOTCMD       "bootm ${kernel_addr_r} - ${fdt_addr_r}"
 
 #include <configs/updatehub-common.h>
 
